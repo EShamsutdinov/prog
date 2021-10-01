@@ -4,42 +4,33 @@ import os
 import colorama
 import time
 class FurnacePerformance:
-    def formulas(self):
-        self.formula_dead_end=f'P=(N*n*n1*m*60)/{self.baking time}'
-        self.formulas_dict=[self.formula_dead_end]
-
-    
-
     def settings(self=None):
         self.typesofbakes={
             'dead_end':"тупиковая",
-            'Other':"other"
         }
-        self.whatsbake=whatsbake
-        self.ind_dict=[]
-        
-        self.ind_dict.append((self.whatsbake,self.method,self.bakingtime,
-                                             self.wheatflour,
-                                             self.ryeflour,
-                                             self.salt_sugar,
-                                             self.yeasts))
-
-
-        if self.whatsbake in self.typesofbakes:
-           perf=self.formulas_dict[0]
-
-        print(self.ind_dict,perf)
-
-
+        self.raw_materials_dict = { 
+            'flour':self.wheatflour,
+            'yeast':self.yeast,
+            'ryeflour':self.ryeflour,
+            'salt':self.salt,
+            'sugar':self.sugar,
+            'result':self.result
+        }
+    def solve_performance(self):
+        P_furnace=(self.N*self.n*self.n1*self.m*60)/int(self.bakingtime)
     def __init__(self):
         self.whatsbake = input("Какая печь: ")
         self.method = input("Опарный или безопарный способ: ")
         self.bakingtime = input("Время выпечки: ")
         self.wheatflour = input("Пшеничная мука,кг (если нет введите -): ")
         self.ryeflour = input("Ржаная мука,кг (если нет введите -): ")
-        self.salt_sugar=input("Кол-во соли и сахара (если нет введите -): ")
-        self.yeasts=input("Кол-во дрожжей (если нет введите -): ")
+        self.salt=input("Кол-во соли (если нет введите -): ")
+        self.sugar=input("Кол-во сахара (если нет введите -): ")
+        self.yeast=input("Кол-во дрожжей (если нет введите -): ")
+        self.result=input("Выход изделия: ")
         self.settings()
+
+        
 
 
 
