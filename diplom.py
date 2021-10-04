@@ -27,11 +27,11 @@ class FurnacePerformance:
         self.yeast=input("Кол-во дрожжей (если нет введите 0): ")
         self.result=input("Выход изделия: ")
     
-    def furnace_performance(self):
-        N=input("N:")
-        n=input("n")
-        n1=input("n1")
-        m=input("m")
+    def furnace_performance_settings(self):
+        N=int(input("N: "))
+        n=int(input("n: "))
+        n1=int(input("n1: "))
+        m=int(input("m: "))
 
 
     def settings(self=None):
@@ -47,6 +47,17 @@ class FurnacePerformance:
             'result':self.result
 
         }
+        self.furnace_settings={
+               'N':'',
+               'n'='',
+               'n1'='',
+               'm'=''
+                }
+        self.furnace_settings['N']=N
+        self.furnace_settings['n']=n
+        self.furnace_settings['n1']=n1
+        self.furnace_settings['m']=m
+        
         for self.keys,self.values in self.raw_materials_dict.items():
             print(f'{self.keys} >>> {self.values}')
 
