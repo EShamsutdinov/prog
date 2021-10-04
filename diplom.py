@@ -5,17 +5,10 @@ import colorama
 import time
 
 P_furnace=0
-N=0
-n=0
-n1=0
-m=0
-a=0
-b=0
-c=0
-d=0
 
 
-class FurnacePerformance:
+
+class FurnacePerformance: #FIXME: fix this class
     def ingredients(self):
         self.whatsbake = input("Какая печь: ")
         self.method = input("Опарный или безопарный способ: ")
@@ -28,10 +21,10 @@ class FurnacePerformance:
         self.result=input("Выход изделия: ")
     
     def furnace_performance_settings(self):
-        N=int(input("N: "))
-        n=int(input("n: "))
-        n1=int(input("n1: "))
-        m=int(input("m: "))
+        self.N=int(input("N: "))
+        self.n=int(input("n: "))
+        self.n1=int(input("n1: "))
+        self.m=float(input("m: "))
 
 
     def settings(self=None):
@@ -47,27 +40,32 @@ class FurnacePerformance:
             'result':self.result
 
         }
+        
+        self.furnace_performance_settings()
+
         self.furnace_settings={
-               'N':'',
-               'n'='',
-               'n1'='',
-               'm'=''
+               'N':'n',
+               'n':'n',
+               'n1':'n',
+               'm':'n'
                 }
-        self.furnace_settings['N']=N
-        self.furnace_settings['n']=n
-        self.furnace_settings['n1']=n1
-        self.furnace_settings['m']=m
+        self.furnace_settings['N']=self.N
+        self.furnace_settings['n']=self.n
+        self.furnace_settings['n1']=self.n1
+        self.furnace_settings['m']=self.m
         
         for self.keys,self.values in self.raw_materials_dict.items():
             print(f'{self.keys} >>> {self.values}')
+        for self.keys,self.values in self.furnace_settings.items():
+            print(f'{self.keys} >>> {self.values}')
 
-    def solve_performance(self):
-        P_furnace=(N*n*n1*m*60)/int(self.bakingtime)
-
+        P_furnace=(self.N*self.n*self.n1*self.m*60)/int(self.bakingtime)
+        print("Производительность тупиковой печи равна", P_furnace)
 
     def __init__(self):
         self.ingredients()
         self.settings()
+        
 
         
 
@@ -75,4 +73,3 @@ class FurnacePerformance:
 
 if __name__=="__main__":
     FurnacePerformance()
-    
